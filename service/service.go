@@ -147,7 +147,7 @@ func GetTheDataByEmail(email string) (*model.Person, error) {
 		log.Println("Found data in cache")
 	}
 
-	log.Printf("retrieved data %v", person)
+	//log.Printf("retrieved data %v", person)
 
 	return &person, nil
 

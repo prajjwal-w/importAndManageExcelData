@@ -28,6 +28,7 @@ func UploadFile() gin.HandlerFunc {
 		if err != nil {
 			log.Println("error while saving the file")
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "error while saving the file"})
+			return
 		}
 
 		//validate the uploaded file in terms of our struct person
@@ -36,6 +37,7 @@ func UploadFile() gin.HandlerFunc {
 		if err != nil {
 			log.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "error while validating excel"})
+			return
 		}
 
 		//parseing the data and storing it into the db async
@@ -43,6 +45,7 @@ func UploadFile() gin.HandlerFunc {
 		if persons == nil {
 			log.Println("error while parsing")
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "error while parsing the data"})
+			return
 		}
 
 		// Start a goroutine to process the data
