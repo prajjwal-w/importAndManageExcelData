@@ -15,6 +15,7 @@ func main() {
 
 	//Using the default gin logger as middleware
 	router.Use(gin.Logger())
+	
 
 	routes.Routes(router)
 

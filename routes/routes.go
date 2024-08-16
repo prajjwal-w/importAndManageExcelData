@@ -3,12 +3,14 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/prajjwal-w/golang-choicetech/controller"
+	"github.com/prajjwal-w/golang-choicetech/middleware"
 )
 
 // routes
 func Routes(r *gin.Engine) {
-	r.POST("/upload", controller.UploadFile())
 	r.GET("/viewdata/*email", controller.ViewData())
-	r.PUT("/update", controller.UpdateData())
+
+	r.POST("/upload", middleware.Auth(),controller.UploadFile())
+	r.PUT("/update", middleware.Auth(), controller.UpdateData())
 
 }
