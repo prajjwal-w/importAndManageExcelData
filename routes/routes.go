@@ -10,7 +10,8 @@ import (
 func Routes(r *gin.Engine) {
 	r.GET("/viewdata/*email", controller.ViewData())
 
-	r.POST("/upload", middleware.Auth(),controller.UploadFile())
+	r.POST("/upload", middleware.Auth(), controller.UploadFile())
 	r.PUT("/update", middleware.Auth(), controller.UpdateData())
+	r.POST("/login", controller.Login())
 
 }
