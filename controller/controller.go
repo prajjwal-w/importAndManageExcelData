@@ -115,3 +115,9 @@ func UpdateData() gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{"message": "Record Updated Successfully"})
 	}
 }
+
+func Login() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "You have logged-in"})
+	}
+}

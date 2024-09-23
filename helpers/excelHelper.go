@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/prajjwal-w/golang-choicetech/model"
 	"github.com/xuri/excelize/v2"
@@ -67,6 +68,7 @@ func ValidateExcel(filepath string, structs interface{}) ([][]string, error) {
 }
 
 func ParsingData(data [][]string) []model.Person {
+	t := time.Now()
 	var person []model.Person
 	var wg sync.WaitGroup
 
@@ -97,7 +99,7 @@ func ParsingData(data [][]string) []model.Person {
 	for res := range result {
 		person = append(person, res)
 	}
-
+	log.Printf("Parsring time: %v", time.Since(t))
 	return person
 
 }
